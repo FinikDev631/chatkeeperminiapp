@@ -152,7 +152,7 @@ document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",(
 $("#chatSearch").addEventListener("input",e=>{search=e.target.value.trim();renderChats()});
 $("#clearSearch").onclick=()=>{$("#chatSearch").value="";search="";renderChats()};
 $("#refreshBtn").onclick=()=>{params();if(!selectedId&&chats.length)selectedId=chats[0].id;render();setSync("● Обновлено");tg?.HapticFeedback?.impactOccurred?.("light");setTimeout(()=>setSync("● Онлайн"),1200)};
-$("#openBot").onclick=()=>{if(tg?.openTelegramLink)tg.openTelegramLink("https://t.me/ChatKeeperBot");else location.href="https://t.me/ChatKeeperBot")};
+$("#openBot").onclick=()=>{if(tg?.openTelegramLink)tg.openTelegramLink("https://t.me/ChatKeeperBot");else location.href="https://t.me/ChatKeeperBot"};
 $("#publishBtn").onclick=()=>{
  const chatId=$("#postChat").value,text=$("#postText").value.trim();
  if(!chatId||!text){tg?.showAlert?.("Выбери чат и введи текст.");return}
