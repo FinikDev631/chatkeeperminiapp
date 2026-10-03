@@ -129,8 +129,8 @@ function renderReports(){
  const c=chat(selectedId),n=c?Number(c.reports||0):0;
  $("#reportBadge").textContent=String(n);$("#reportLarge").textContent=String(n);
 }
-function renderCommands(){
- const box=$("#commandList");if(!box)return;
+function buildCommands(box){
+ if(!box)return;
  box.innerHTML="";
  commandGroups.forEach(group=>{
   const section=document.createElement("div");section.className="command-group";
@@ -144,6 +144,7 @@ function renderCommands(){
   box.appendChild(section);
  });
 }
+function renderCommands(){buildCommands($("#supportCommands"))}
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>{
  const p=b.dataset.page;
  if(p==="settings"&&!selectedId&&chats.length)selectChat(chats[0].id);
@@ -161,3 +162,10 @@ $("#publishBtn").onclick=()=>{
 params();
 if(!selectedId&&chats.length)selectedId=chats[0].id;
 if(chats.length)selectChat(selectedId);else render();
+$("#supportStars")?.addEventListener("click",()=>{
+  if(tg?.showAlert)tg.showAlert("Поддержка через Telegram Stars доступна в ChatKeeperBot.");
+  else send({type:"support"});
+});
+$("#showCommands")?.addEventListener("click",()=>{
+  document.querySelector("#supportCommands")?.scrollIntoView({behavior:"smooth",block:"start"});
+});
