@@ -63,10 +63,25 @@
   <div class="panel muted-panel">Жалобы и действия модераторов обрабатываются через ChatKeeperBot.</div>
 </section>
 
-<section id="page-commands" class="page">
-  <div class="page-head"><button class="back" data-page="chats">‹</button><div><span class="kicker">СПРАВКА</span><h2>Команды</h2></div></div>
-  <div class="command-note">Полный список команд ChatKeeperBot. Админские команды доступны только пользователям с соответствующими правами.</div>
-  <div id="commandList" class="command-groups"></div>
+<section id="page-support" class="page">
+  <div class="page-head"><button class="back" data-page="chats">‹</button><div><span class="kicker">ПОДДЕРЖКА</span><h2>Поддержка</h2></div></div>
+  <div class="support-card">
+    <div class="support-icon">★</div>
+    <div>
+      <h3>Поддержать ChatKeeperBot</h3>
+      <p>Поддержка проекта помогает развивать бота и Mini App.</p>
+    </div>
+    <button id="supportStars" class="primary">⭐ Поддержать</button>
+  </div>
+  <div class="support-card commands-support">
+    <div class="support-icon">?</div>
+    <div>
+      <h3>Все команды</h3>
+      <p>Полный список команд ChatKeeperBot с описаниями.</p>
+    </div>
+    <button id="showCommands" class="primary secondary">📖 Открыть команды</button>
+  </div>
+  <div id="supportCommands" class="command-groups"></div>
 </section>
 </main>
 
@@ -75,7 +90,7 @@
   <button data-page="settings"><i>⚙</i><span>Настройки</span></button>
   <button data-page="posting"><i>✎</i><span>Постинг</span></button>
   <button data-page="reports"><i>!</i><span>Жалобы</span><em id="reportBadge">0</em></button>
-  <button data-page="commands"><i>?</i><span>Команды</span></button>
+  <button data-page="support"><i>★</i><span>Поддержка</span></button>
 </nav>
 </div>
 <script src="app.js?v=20261003e"></script>
