@@ -80,7 +80,7 @@ function go(page){
  if(page==="settings")renderSettings();
  if(page==="posting")renderPosting();
  if(page==="reports")renderReports();
- if(page==="commands")renderCommands();
+ if(page==="support")renderCommands();
 }
 function render(){renderChats();renderSettings();renderPosting();renderReports();renderCommands()}
 function renderChats(){
