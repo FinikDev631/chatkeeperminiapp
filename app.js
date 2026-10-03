@@ -2,10 +2,13 @@ const tg=window.Telegram?.WebApp;
 if(tg){tg.ready();tg.expand()}
 const params=new URLSearchParams(location.search);
 const targetId=params.get("chat_id")||"";
-const targetTitle=params.get("chat_title")||"Выбранный чат";
+const targetTitle=params.get("chat_title")||("Чат "+(targetId||"не выбран"));
 const user=tg?.initDataUnsafe?.user;
 const state=JSON.parse(localStorage.getItem("chatkeeper_settings")||"{}");
+["antispam","antilink","antiflood","welcome"].forEach(k=>{if(params.has(k))state[k]=params.get(k)==="1"});
+const reportCount=Number(params.get("reports")||0);
 const chats=targetId?[{id:targetId,title:targetTitle,type:"group"}]:[];
+const badge=document.getElementById("reportBadge");if(badge)badge.textContent=String(reportCount);
 const pages={chats:"Мои чаты",settings:"Настройки чата",posting:"Постинг",reports:"Жалобы"};
 const $=s=>document.querySelector(s);
 function send(data){
