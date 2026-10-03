@@ -162,10 +162,5 @@ $("#publishBtn").onclick=()=>{
 params();
 if(!selectedId&&chats.length)selectedId=chats[0].id;
 if(chats.length)selectChat(selectedId);else render();
-$("#supportStars")?.addEventListener("click",()=>{
-  if(tg?.showAlert)tg.showAlert("Поддержка через Telegram Stars доступна в ChatKeeperBot.");
-  else send({type:"support"});
-});
-$("#showCommands")?.addEventListener("click",()=>{
-  document.querySelector("#supportCommands")?.scrollIntoView({behavior:"smooth",block:"start"});
-});
+$("#supportStars")?.addEventListener("click",()=>{ if(tg?.showAlert)tg.showAlert("Поддержка через Telegram Stars доступна в ChatKeeperBot."); else send({type:"support"}); });
+
