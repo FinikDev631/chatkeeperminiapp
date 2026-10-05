@@ -8,3 +8,9 @@
 @media(max-width:650px){.shell{width:calc(100% - 10px)}.chat-grid,.settings-grid,.command-groups,#supportCommands{grid-template-columns:1fr}.support-card{align-items:flex-start;flex-wrap:wrap}.support-card .primary{margin-left:62px}.bottom-nav{width:100%;border-radius:10px 10px 0 0}}
 
 .help-card{display:flex;align-items:center;gap:9px;padding:10px 11px;border:1px solid var(--line);background:var(--card);border-radius:11px;margin-bottom:7px}.help-card b{color:#ff777c;font:700 11px ui-monospace,SFMono-Regular,Consolas,monospace}.help-card span{color:var(--muted);font-size:9px;line-height:1.35}.support-card h3{font-size:12px}.support-card p{font-size:9px}.support-card .primary{padding:8px 10px;font-size:9px}
+
+.report-item{padding:14px 16px;margin-top:10px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.03)}
+.report-item-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px}
+.report-item-head span{font-size:12px;opacity:.65}
+.report-reason,.report-message{margin:7px 0;line-height:1.45}
+.report-item small{display:block;margin-top:9px;opacity:.55}
