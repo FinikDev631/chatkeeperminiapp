@@ -125,9 +125,24 @@ function renderPosting(){
  chats.forEach(c=>{const o=document.createElement("option");o.value=c.id;o.textContent=c.title||("Чат "+c.id);if(c.id===selectedId)o.selected=true;s.appendChild(o)});
  if(!chats.length)s.innerHTML='<option value="">Нет доступных чатов</option>';
 }
+function escapeHtml(value){
+ return String(value??"").replace(/[&<>"\']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[m]));
+}
 function renderReports(){
- const c=chat(selectedId),n=c?Number(c.reports||0):0;
+ const c=chat(selectedId);
+ const reports=Array.isArray(c?.reports)?c.reports:[];
+ const n=Number(c?.report_count ?? reports.length);
  $("#reportBadge").textContent=String(n);$("#reportLarge").textContent=String(n);
+ const panel=document.querySelector("#page-reports .muted-panel");
+ if(!panel)return;
+ if(!c){panel.innerHTML="Сначала выбери чат в разделе «Чаты».";return;}
+ if(!reports.length){panel.innerHTML="В выбранном чате нет открытых репортов.";return;}
+ panel.innerHTML=reports.map(r=>{
+  const reason=escapeHtml(r.reason||"Причина не указана");
+  const message=escapeHtml(r.text||"Сообщение недоступно");
+  const reporter=r.reporter_id?("ID отправителя: "+escapeHtml(r.reporter_id)):"";
+  return "<article class=\"report-item\"><div class=\"report-item-head\"><strong>Репорт #"+escapeHtml(r.id)+"</strong><span>Открыт</span></div><div class=\"report-reason\"><b>Причина:</b> "+reason+"</div><div class=\"report-message\"><b>Сообщение:</b> "+message+"</div><small>"+reporter+"</small></article>";
+ }).join("");
 }
 function buildCommands(box){
  if(!box)return;
